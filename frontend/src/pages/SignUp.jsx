@@ -7,6 +7,7 @@ import { serverUrl } from '../App';
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 
+
 function SignUp() {
   const [inputClicked, setInputClicked] = useState({
     name: false,
@@ -19,12 +20,14 @@ function SignUp() {
 
   const[name,setName]=useState("")
   const[userName,setUserName]=useState("")
+  const[err,setErr]=useState("")
   const[email,setEmail]=useState("")
   const[password,setPassword]=useState("")
   const navigate=useNavigate()
 
   const handleSignUp=async ()=>{
     setLoading(true)
+    setErr("")
   
 
   try {
@@ -32,6 +35,7 @@ function SignUp() {
     console.log(result.data)
     setLoading(false)
   } catch (error) {
+    setErr(error.response?.data?.message)
     
     console.log(error)
     setLoading(false)
@@ -147,6 +151,7 @@ function SignUp() {
               />
             )}
           </div>
+          {err && <p className='text-red-500'>{err}</p>}
 
           <button className="w-[70%] px-[20px] py-[10px] bg-black text-white font-semibold h-[50px] cursor-pointer rounded-2xl mt-[30px]" onClick={handleSignUp} disabled={loading}>
             {loading?<ClipLoader size={30} color="white"/> :"Sign Up"}

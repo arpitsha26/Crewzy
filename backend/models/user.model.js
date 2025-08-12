@@ -66,6 +66,19 @@ const userSchema = new mongoose.Schema({
         ref: "Story"
     }
     ,
+    resetOtp:{
+        type:String
+    },
+
+    otpExpires:{
+        type:Date
+
+    },
+
+    isOtpverified:{
+        type:Boolean,
+        default:false
+    }
 
 
 
