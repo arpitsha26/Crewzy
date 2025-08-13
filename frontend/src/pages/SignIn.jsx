@@ -7,9 +7,9 @@ import axios from "axios"
 import { serverUrl } from '../App';
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from 'react-router-dom';
-
-
-function SignIn(){
+import { useDispatch } from 'react-redux';
+import { setUserData } from '../redux/userSlice';
+function SignIn() {
 const [inputClicked,setInputClicked]=useState({
     userName:false,
     password:false
@@ -17,18 +17,16 @@ const [inputClicked,setInputClicked]=useState({
 const [showPassword,setShowPassword]=useState(false)
 const [loading,setLoading]=useState(false)
 const [userName,setUserName]=useState("")
-
 const [password,setPassword]=useState("")
 const [err,setErr]=useState("")
 const navigate=useNavigate()
-
-
+const dispatch=useDispatch()
 const handleSignIn=async ()=>{
   setLoading(true)
   setErr("")
   try {
-   const result=await axios.post(`${serverUrl}/api/auth/signin`,{userName,password},{withCredentials:true})
-   console.log(result.data)
+    const result=await axios.post(`${serverUrl}/api/auth/signin`,{userName,password},{withCredentials:true})
+   dispatch(setUserData(result.data))
     setLoading(false)
   } catch (error) {
     console.log(error)
