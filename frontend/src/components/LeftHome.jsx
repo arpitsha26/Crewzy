@@ -7,11 +7,13 @@ import axios from "axios"
 import { serverUrl } from '../App';
 import { useDispatch } from "react-redux";
 import { setUserData } from '../redux/userSlice';
+import OtherUser from './OtherUser';
+
 
 
 function LeftHome() {
 
-    const {userData}= useSelector(state=>state.user)
+    const {userData,suggestedUsers}= useSelector(state=>state.user)
     const dispatch=useDispatch()
 
     const handleLogOut= async ()=>{
@@ -47,7 +49,15 @@ function LeftHome() {
 
         <div className='text-blue-500 font-semibold cursor-pointer' onClick={handleLogOut}>Log out</div>
         
+      </div>
 
+      <div className='w-full flex flex-col gap-[20px] p-[20px]'>
+        <h1 className='text-[white] text-[19px]'>Suggested Users</h1>
+          {suggestedUsers && suggestedUsers.slice(0,3).map((user,index)=>(
+        <OtherUser key={index} user={user}/>
+    ))}
+      
+    
       </div>
     </div>
   )
