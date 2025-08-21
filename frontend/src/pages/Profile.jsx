@@ -125,7 +125,7 @@ function Profile() {
 
         <div className='w-full h-[80px] flex justify-center items-center gap-[20px] mt-[10px]'>
         {profileData?._id==userData._id && 
-            <button className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-[white] cursor-pointer rounded-2xl'>
+            <button className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-[white] cursor-pointer rounded-2xl ' onClick={()=>navigate("/editprofile")}>
                 Edit Profile
             </button>}
 
