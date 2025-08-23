@@ -8,7 +8,9 @@ import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
-
+import { FaGithub, FaLinkedin, FaReact, FaNodeJs } from "react-icons/fa";
+import { SiMongodb } from "react-icons/si";
+import { LuInstagram } from "react-icons/lu";
 
 function SignUp() {
   const [inputClicked, setInputClicked] = useState({
@@ -176,6 +178,39 @@ function SignUp() {
           <p>Connect Your Crew. Share Your World</p>
         </div>
       </div>
+
+      <footer className="w-full lg:w-[60%] rounded-2xl bg-gradient-to-r from-black via-gray-900 to-black text-gray-400 text-sm py-1 mt-3">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 px-4">
+    
+    {/* Left - Logo and Name */}
+    <div className="flex items-center gap-3">
+      <img src={logo2} alt="Crewzy Logo" className="w-10 h-10 rounded-lg shadow-md" />
+      <p className="text-gray-300">
+        Made with ❤️ by <span className="text-white font-semibold">Arpit Sharma</span>
+      </p>
+    </div>
+
+     <div className="flex gap-5 text-lg ">
+           <a href="https://github.com/arpitsha26" target="_blank" rel="noreferrer" className="hover:text-white">
+             <FaGithub />
+           </a>
+           <a href="https://linkedin.com/in/arpitsha26" target="_blank" rel="noreferrer" className="hover:text-white">
+             <FaLinkedin />
+           </a>
+            <a href="https://www.instagram.com/arpit_sharma.26/" target="_blank" rel="noreferrer" className="hover:text-white">
+             <LuInstagram />
+           </a>
+         </div>
+
+    
+   
+  </div>
+
+  {/* Bottom Text */}
+  <div className="text-center text-gray-500 text-xs mt-2 border-t border-gray-700 pt-3">
+    ©2025 Crewzy. All rights reserved.
+  </div>
+</footer>
     </div>
   );
 }
