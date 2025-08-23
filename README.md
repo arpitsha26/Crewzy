@@ -18,67 +18,68 @@ Built with the **MERN stack (MongoDB, Express.js, React, Node.js)**, Crewzy prov
 
 ---
 
-## 📂 Project Structure
+***
 
+### 📂 Project Structure
+
+```
 Crewzy/
-│── frontend/ # React + Vite frontend
-│── backend/ # Node.js + Express backend
+├── frontend/   # React + Vite frontend
+└── backend/    # Node.js + Express backend
+```
 
 
+***
 
----
+### 🚀 Getting Started
 
-## 🚀 Getting Started
+#### 1️⃣ Clone the Repository
 
-### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/yourusername/Crewzy.git
 cd Crewzy
+```
 
 
-2️⃣ Setup Backend
+#### 2️⃣ Set Up Backend
+
 ```bash
 cd backend
 npm install
 npm run dev
+```
 
-3️⃣ Setup Frontend
+
+#### 3️⃣ Set Up Frontend
 
 ```bash
 cd frontend
 npm install
 npm run dev
+```
 
 
+***
 
-🛠️ Tech Stack
+### 🛠️ Tech Stack
 
-Frontend: React, Vite, TailwindCSS (if used)
+- **Frontend:** React, Vite, TailwindCSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB (Mongoose ODM)
+- **Authentication:** JWT (JSON Web Tokens)
+- **Real-Time:** Socket.io
+- **Others:** REST APIs, Middleware, Notifications
 
-Backend: Node.js, Express.js
+***
 
-Database: MongoDB (Mongoose ODM)
-
-Authentication: JWT (JSON Web Tokens)
-
-Real-Time: Socket.io
-
-Others: REST APIs, Middleware, Notifications
-
-
-🤝 Contributing
+### 🤝 Contributing
 
 Contributions are welcome!
 
-Fork the repo
+1. Fork the repository.
+2. Create a new branch (`feature/your-feature`).
+3. Commit your changes.
+4. Push to your branch.
+5. Create a Pull Request.
 
-Create a new branch (feature/your-feature)
-
-Commit your changes
-
-Push to your branch
-
-Create a Pull Request
-
-
-
+***
