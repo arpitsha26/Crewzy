@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import getSuggestedUsers from './hooks/getSuggestedUsers'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
+import Upload from './pages/Upload'
 
 
 export const serverUrl="http://localhost:8000"
@@ -26,6 +27,7 @@ function App() {
     <Route path='/forgot-password' element={!userData?<ForgotPassword/>:<Navigate to={"/"}/>}/>
     <Route path='/profile/:userName' element={userData?<Profile/>:<Navigate to={"/signin"}/>}/>
     <Route path='/editprofile' element={userData?<EditProfile/>:<Navigate to={"/signin"}/>}/>
+    <Route path='/upload' element={userData?<Upload/>:<Navigate to={"/signin"}/>}/>
 
 
    </Routes>
