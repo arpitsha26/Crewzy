@@ -10,6 +10,7 @@ import getSuggestedUsers from './hooks/getSuggestedUsers'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
 import Upload from './pages/Upload'
+import getAllPost from './hooks/getAllPost'
 
 
 export const serverUrl="http://localhost:8000"
@@ -17,6 +18,7 @@ export const serverUrl="http://localhost:8000"
 function App() {
   getCurrentUser()
   getSuggestedUsers()
+  getAllPost()
   const{userData}=useSelector(state=>state.user)
   
   return (

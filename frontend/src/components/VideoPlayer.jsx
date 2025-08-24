@@ -6,7 +6,7 @@ import { FiVolume2 } from "react-icons/fi";
 import { FiVolumeX } from "react-icons/fi";
 function VideoPlayer({media}) {
     const videoTag=useRef()
-    const [mute,setMute]=useState(false)
+    const [mute,setMute]=useState(true)
     const [isPlaying,setIsplaying]=useState(true)
 const handleClick=()=>{
 if(isPlaying){

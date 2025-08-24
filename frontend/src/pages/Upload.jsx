@@ -5,6 +5,11 @@ import { FiPlusSquare } from "react-icons/fi";
 import VideoPlayer from '../components/VideoPlayer';
 import axios from 'axios';
 import { serverUrl } from '../App';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPostData } from '../redux/postSlice';
+import { setStoryData } from '../redux/storySlice';
+import { setLoopData } from '../redux/loopSlice';
+import { ClipLoader } from 'react-spinners';
 
 function Upload() {
     const navigate= useNavigate()
@@ -14,6 +19,12 @@ function Upload() {
     const[mediaType,setMediaType]=useState("")
     const[caption,setCaption]=useState("")
     const mediaInput= useRef()
+    const dispatch=useDispatch()
+    const{postData}=useSelector(state=>state.post)
+    const{storyData}=useSelector(state=>state.story)
+    const{loopData}=useSelector(state=>state.loop)
+    const[loading,setLoading]=useState(false)
+
     
 
     const handleMedia=(e)=>{
@@ -31,6 +42,7 @@ function Upload() {
     }
 
     const uploadPost=async()=>{
+        setLoading(true)
         try {
             const formData= new FormData()
 
@@ -40,7 +52,9 @@ function Upload() {
 
             const result = await axios.post(`${serverUrl}/api/post/upload`, formData, {withCredentials:true})
 
-            console.log(result)
+            dispatch(setPostData([...postData,result.data]))
+            setLoading(false)
+            navigate("/")
 
         } catch (error) {
             console.log(error)
@@ -58,7 +72,9 @@ function Upload() {
 
             const result = await axios.post(`${serverUrl}/api/post/story`, formData, {withCredentials:true})
 
-            console.log(result)
+            dispatch(setStoryData([...storyData,result.data]))
+            setLoading(false)
+            navigate("/")
 
         } catch (error) {
             console.log(error)
@@ -76,7 +92,9 @@ function Upload() {
 
             const result = await axios.post(`${serverUrl}/api/post/loop`, formData, {withCredentials:true})
 
-            console.log(result)
+            dispatch(setLoopData([...loopData,result.data]))
+            setLoading(false)
+            navigate("/")
 
         } catch (error) {
             console.log(error)
@@ -85,6 +103,7 @@ function Upload() {
     }
 
     const handleUpload=()=>{
+        setLoading(true)
         if(uploadType=="post"){
             uploadPost()
         }
@@ -137,7 +156,7 @@ function Upload() {
         
         
         
-        {frontendMedia && <button onClick={handleUpload} className='px-[10px] w-[60%] max-w-[400px]   py-[5px] h-[50px] bg-[white] mt-[50px] cursor-pointer rounded-2xl'>Upload {uploadType}</button>}
+        {frontendMedia && <button onClick={handleUpload} className='px-[10px] w-[60%] max-w-[400px]   py-[5px] h-[50px] bg-[white] mt-[50px] cursor-pointer rounded-2xl'> {loading?<ClipLoader size={30} color='black'/>:`Upload ${uploadType}` }</button>}
             
             
             
