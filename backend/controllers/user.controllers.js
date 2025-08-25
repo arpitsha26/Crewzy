@@ -4,7 +4,7 @@ import User from "../models/user.model.js"
 export const getCurrentUser=async(req,res)=>{
     try {
         const userId=req.userId
-        const user=await User.findById(userId).populate("posts loops")
+        const user=await User.findById(userId).populate("posts loops posts.author posts.comments ")
         if(!user){
             return res.status(400).json({
                 message:"user not found"
@@ -88,7 +88,7 @@ export const editProfile = async (req, res) => {
 export const getProfile= async (req,res)=>{
     try {
         const userName=req.params.userName
-        const user= await User.findOne({userName}).select("-password").populate("posts loops followers following")
+        const user= await User.findOne({userName}).select("-password").populate("posts loops followers following ")
 
          if(!user){
             return res.status(400).json({
