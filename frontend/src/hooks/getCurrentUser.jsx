@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { serverUrl } from '../App'
 import { useDispatch } from "react-redux";
-import { setUserData } from '../redux/userSlice';
+import { setFollowing, setUserData } from '../redux/userSlice';
 
 function getCurrentUser() {
   
@@ -15,6 +15,7 @@ function getCurrentUser() {
             const result=await axios.get(`${serverUrl}/api/user/current`, {withCredentials:true})
 
             dispatch(setUserData(result.data))
+            dispatch(setFollowing(result.data.following))
         } catch (error) {
             console.log(error)
             

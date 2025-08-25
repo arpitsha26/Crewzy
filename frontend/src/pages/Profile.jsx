@@ -9,6 +9,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import dp from "../assets/dp.webp"
 import { RxButton } from 'react-icons/rx'
 import Nav from '../components/Nav'
+import FollowButton from '../components/FollowButton'
 
 function Profile() {
 
@@ -72,19 +73,17 @@ function Profile() {
           <div>
             <div className='flex items-center justify-center gap-[20px]'>
                 <div className='flex relative'>
+                    {profileData?.followers?.slice(0,3).map((user,index)=>(
+                         <div className={`w-[40px] h-[40px]  border-2 border-black rounded-full cursor-pointer overflow-hidden ${index>0?`absolute left-[${index*9}]`:""}`}>
+                                                    <img src={user?.profileImage || dp} alt="" className='w-full object-cover' />
+                         </div>
+
+                    ))}
                                             
                 
-                                                <div className='w-[40px] h-[40px]  border-2 border-black rounded-full cursor-pointer overflow-hidden '>
-                                                    <img src={profileData?.profileImage || dp} alt="" className='w-full object-cover' />
-                                                </div>
+                                               
 
-                                                 <div className='w-[40px] h-[40px] absolute  border-2 border-black rounded-full cursor-pointer overflow-hidden left-[9px] '>
-                                                    <img src={profileData?.profileImage || dp} alt="" className='w-full object-cover' />
-                                                </div>
-
-                                                 <div className='w-[40px] h-[40px] absolute border-2 border-black rounded-full cursor-pointer overflow-hidden left-[18px]'>
-                                                    <img src={profileData?.profileImage || dp} alt="" className='w-full object-cover' />
-                                                </div>
+                                                 
                                                
                 
                 
@@ -132,9 +131,7 @@ function Profile() {
         {profileData?._id!=userData._id 
         &&
         <>
-         <button className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-[white] cursor-pointer rounded-2xl'>
-                Follow 
-            </button>
+        <FollowButton tailwind={'px-[10px] min-w-[150px] py-[5px] h-[40px] bg-[white] cursor-pointer rounded-2xl'} targetUserId={profileData?._id} onFollowChange={handleProfile}/>
         
          <button className='px-[10px] min-w-[150px] py-[5px] h-[40px] bg-[white] cursor-pointer rounded-2xl'>
                 Message

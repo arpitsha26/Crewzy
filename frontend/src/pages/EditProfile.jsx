@@ -79,7 +79,33 @@ function EditProfile() {
         <input type="text" className='w-[90%] max-w-[600px] h-[60px] bg-[#0a1010] border-2 border-gray-700 rounded-2xl text-white font-semibold px-[20px] outline-none ' placeholder='Enter Your userName' onChange={(e)=>setUserName(e.target.value)} value={userName}/>
         <input type="text" className='w-[90%] max-w-[600px] h-[60px] bg-[#0a1010] border-2 border-gray-700 rounded-2xl text-white font-semibold px-[20px] outline-none ' placeholder='Bio' onChange={(e)=>setBio(e.target.value)} value={bio}/>
         <input type="text" className='w-[90%] max-w-[600px] h-[60px] bg-[#0a1010] border-2 border-gray-700 rounded-2xl text-white font-semibold px-[20px] outline-none ' placeholder='Profession' onChange={(e)=>setProfession(e.target.value)} value={profession}/>
-        <input type="text" className='w-[90%] max-w-[600px] h-[60px] bg-[#0a1010] border-2 border-gray-700 rounded-2xl text-white font-semibold px-[20px] outline-none ' placeholder='Gender' onChange={(e)=>setGender(e.target.value)} value={gender}/>
+        {/* Gender Radio Buttons */}
+<div className='w-[90%] max-w-[600px] flex items-center justify-between text-white px-[10px]'>
+  <label className="flex items-center gap-2 cursor-pointer">
+    <input
+      type="radio"
+      name="gender"
+      value="male"
+      checked={gender === "male"}
+      onChange={(e) => setGender(e.target.value.toLowerCase())}
+      className="accent-blue-500"
+    />
+    Male
+  </label>
+
+  <label className="flex items-center gap-2 cursor-pointer">
+    <input
+      type="radio"
+      name="gender"
+      value="female"
+      checked={gender === "female"}
+      onChange={(e) => setGender(e.target.value.toLowerCase())}
+      className="accent-pink-500"
+    />
+    Female
+  </label>
+</div>
+
 
         <button className='px-[10px] w-[60%] max-w-[400px]   py-[5px] h-[50px] bg-[white] cursor-pointer rounded-2xl' onClick={handleEditProfile}>{loading?<ClipLoader size={30} color='black'/>:"Save Profile"}</button>
         

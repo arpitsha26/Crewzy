@@ -40,7 +40,9 @@ export const uploadPost= async(req,res)=>{
 
 export const getAllPosts= async(req,res)=>{
     try {
-        const posts=await Post.find({}).populate("author", "name userName profileImage").sort({ createdAt: -1 })
+        const posts = await Post.find({})
+            .populate("author", "name userName profileImage")
+            .populate("comments.author", "name userName profileImage").sort({ createdAt: -1 })
         return res.status(200).json(posts)
         
     } catch (error) {
@@ -74,7 +76,7 @@ export const like=async(req,res)=>{
             post.likes.push(req.userId)
         }
         await post.save()
-        post.populate("author", "name userName profileImage")
+        await post.populate("author", "name userName profileImage")
 
         return res.status(200).json(post)
     } catch (error) {
@@ -105,8 +107,8 @@ export const comment =async(req,res)=>{
         })
 
         await post.save()
-        post.populate("author", "name userName profileImage")
-        post.populate("comments.author")
+        await post.populate("author", "name userName profileImage")
+        await post.populate("comments.author")
 
         return res.status(200).json(post)
         
@@ -146,3 +148,4 @@ export const saved=async(req,res)=>{
         
     }
 }
+
