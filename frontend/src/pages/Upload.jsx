@@ -62,45 +62,32 @@ function Upload() {
         }
     }
 
-     const uploadStory=async()=>{
-        try {
-            const formData= new FormData()
-
-            
-            formData.append("mediaType", mediaType)
-            formData.append("media", backendMedia)
-
-            const result = await axios.post(`${serverUrl}/api/post/story`, formData, {withCredentials:true})
-
-            dispatch(setStoryData([...storyData,result.data]))
-            setLoading(false)
-            navigate("/")
-
-        } catch (error) {
-            console.log(error)
-            
-        }
+     const uploadStory=async ()=>{
+    try {
+        const formData=new FormData()
+        formData.append("mediaType",mediaType)
+        formData.append("media",backendMedia)
+        const result=await axios.post(`${serverUrl}/api/story/upload`,formData,{withCredentials:true})
+       dispatch(setCurrentUserStory(result.data))
+         setLoading(false)
+       navigate("/")
+    } catch (error) {
+        console.log(error)
     }
-
-
-     const uploadLoop=async()=>{
-        try {
-            const formData= new FormData()
-
-            formData.append("caption", caption)
-            formData.append("media", backendMedia)
-
-            const result = await axios.post(`${serverUrl}/api/post/loop`, formData, {withCredentials:true})
-
-            dispatch(setLoopData([...loopData,result.data]))
-            setLoading(false)
-            navigate("/")
-
-        } catch (error) {
-            console.log(error)
-            
-        }
+}
+const uploadLoop=async ()=>{
+    try {
+        const formData=new FormData()
+        formData.append("caption",caption)
+        formData.append("media",backendMedia)
+        const result=await axios.post(`${serverUrl}/api/loop/upload`,formData,{withCredentials:true})
+         dispatch(setLoopData([...loopData,result.data]))
+         setLoading(false)
+       navigate("/")
+    } catch (error) {
+        console.log(error)
     }
+}
 
     const handleUpload=()=>{
         setLoading(true)
@@ -135,7 +122,7 @@ function Upload() {
 
 
         {!frontendMedia &&   <div className='w-[80%] max-w-[500px] h-[250px] bg-[#0e1316] border-gray-800 border-2 flex flex-col items-center justify-center gap-[8px] mt-[15vh] rounded-2xl cursor-pointer hover:bg-[#353a3d]' onClick={() => mediaInput.current.click()}>
-            <input type="file" hidden ref={mediaInput} onChange={handleMedia}/>
+            <input type="file" accept={uploadType=="loop"?"video/*":""} hidden ref={mediaInput} onChange={handleMedia} />
             <FiPlusSquare className='text-white cursor-pointer w-[25px] h-[25px]' />
             <div className='text-white text-[19px] font-semibold'>Upload {uploadType}</div>
             
@@ -149,7 +136,7 @@ function Upload() {
                 {uploadType!="story" && <input type="text" className='w-full border-b-gray-400 border-b-2 outline-none px-[10px] py-[5px] text-white mt-[20px]' placeholder='Write caption' onChange={(e)=>setCaption(e.target.value)}  value={caption}/>}
                  </div>}
 
-               {mediaType=="video" && <div className='w-[80%] max-w-[500px] h-[250px]  flex flex-col items-center justify-center  mt-[5vh]'>
+               {mediaType=="video" && <div className='w-[80%] max-w-[500px] h-[400px]  flex flex-col items-center justify-center  mt-[5vh]'>
                    <VideoPlayer media={frontendMedia}/>
                 {uploadType!="story" && <input type="text" className='w-full border-b-gray-400 border-b-2 outline-none px-[10px] py-[5px] text-white mt-[20px]' placeholder='Write caption' onChange={(e)=>setCaption(e.target.value)}  value={caption}/>}
                  </div>}

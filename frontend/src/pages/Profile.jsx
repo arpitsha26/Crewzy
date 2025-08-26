@@ -140,23 +140,24 @@ function Profile() {
         </div>
 
 
-        <div className='w-full min-h-[100vh]  flex justify-center'>
-            <div className='w-full max-w-[900px] flex flex-col items-center rounded-t-[30px] bg-white relative gap-[20px] pt-[30px] pb-[100px]'>
-                {profileData?._id==userData._id && <div className='w-[90%] max-w-[500px] h-[80px] bg-[white] rounded-full flex justify-center items-center gap-[10px]' >
+      <div className='w-full min-h-[100vh]  flex justify-center'>
+                <div className='w-full max-w-[900px] flex flex-col items-center rounded-t-[30px] bg-white relative gap-[20px] pt-[30px] pb-[100px]'>
+                    {profileData?._id==userData._id && <div className='w-[90%] max-w-[500px] h-[80px] bg-[white] rounded-full flex justify-center items-center gap-[10px]' >
 
                 <div className={`${postType == "posts" ? "bg-black text-white shadow-2xl shadow-black" : ""}  w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold hover:bg-black rounded-full hover:text-white cursor-pointer hover:shadow-2xl hover:shadow-black`} onClick={() => setPostType("posts")}>Posts</div>
 
                 <div className={`${postType == "saved" ? "bg-black text-white shadow-2xl shadow-black" : ""}  w-[28%] h-[80%] flex justify-center items-center text-[19px] font-semibold hover:bg-black rounded-full hover:text-white cursor-pointer hover:shadow-2xl hover:shadow-black`} onClick={() => setPostType("saved")}>Saved</div>
 
              </div>}
-             <Nav/>
+
+                    <Nav />
 
 {profileData?._id==userData._id && <>
                    { postType=="posts" && postData.map((post,index)=>(
     post.author?._id==profileData?._id && <Post post={post}/>
 ))}
 {postType=="saved" && postData.map((post,index)=>(
-    userData?.saved.includes(post._id) && <Post post={post}/>
+    userData.saved.includes(post._id) && <Post post={post}/>
 ))}
 </> 
 }

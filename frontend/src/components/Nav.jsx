@@ -17,7 +17,7 @@ const navigate=useNavigate()
       <div onClick={()=>navigate("/")}><GoHomeFill className='text-white cursor-pointer w-[25px] h-[25px]'/></div>
       <div><ImSearch className='text-white cursor-pointer w-[25px] h-[25px]' /></div>
       <div onClick={()=>navigate("/upload")}><LuCirclePlus className='text-white cursor-pointer w-[25px] h-[25px]' /></div>
-      <div><RxVideo className='text-white cursor-pointer w-[25px] h-[28px]' /></div>
+      <div><RxVideo className='text-white cursor-pointer w-[25px] h-[28px]' onClick={()=>navigate("/loops")} /></div>
       <div className='w-[40px] h-[40px] border-2 border-black rounded-full cursor-pointer overflow-hidden' onClick={()=>navigate(`/profile/${userData.userName}`)}>
                <img src={ userData.profileImage || dp} alt="" className='w-full object-cover'/>
       </div>

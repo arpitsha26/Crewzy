@@ -4,23 +4,25 @@ import { serverUrl } from "../App";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserData } from "../redux/userSlice";
 import { setPostData } from "../redux/postSlice";
+import { setLoopData } from "../redux/loopSlice";
 
-function getAllPost() {
+function getAllLoops() {
   const dispatch = useDispatch();
   const { userData } = useSelector((state) => state.user);
+  
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchLoops = async () => {
       try {
-        const result = await axios.get(`${serverUrl}/api/post/getAll`, {
+        const result = await axios.get(`${serverUrl}/api/loop/getAll`, {
           withCredentials: true,
         });
-        dispatch(setPostData(result.data));
+        dispatch(setLoopData(result.data));
       } catch (error) {
         console.log(error);
       }
     };
-    fetchPost();
+    fetchLoops();
   }, [dispatch, userData]);
 }
 
-export default getAllPost;
+export default getAllLoops;

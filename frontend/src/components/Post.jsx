@@ -44,6 +44,7 @@ function Post({ post }) {
 
       const updatedPosts=postData.map(p=>p._id==post._id?updatedPost:p)
       dispatch(setPostData(updatedPosts))
+      setMessage("")
     } catch (error) {
       console.log(error.response)
     }
@@ -97,9 +98,9 @@ function Post({ post }) {
             </div>
 
         </div>
-        <div onClick={handleSaved}>
-          {!userData.saved.includes(post?._id) && <MdOutlineBookmarkBorder className='w-[25px] cursor-pointer h-[25px]' />}
-          {userData.saved.includes(post?._id) && <GoBookmarkFill className='w-[25px] cursor-pointer h-[25px]' />}
+         <div onClick={handleSaved}>
+                  {!userData.saved.includes(post?._id) && <MdOutlineBookmarkBorder className='w-[25px] cursor-pointer h-[25px]' />}
+                  {userData.saved.includes(post?._id) && <GoBookmarkFill className='w-[25px] cursor-pointer h-[25px]' />}
         </div>
 
       </div>

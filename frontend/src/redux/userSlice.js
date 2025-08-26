@@ -20,7 +20,7 @@ const userSlice= createSlice({
             state.suggestedUsers=action.payload
         },
 
-         setPofileData:(state,action)=>{
+        setPofileData:(state,action)=>{
             
             state.profileData=action.payload
         },

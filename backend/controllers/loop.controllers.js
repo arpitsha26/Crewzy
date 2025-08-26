@@ -3,40 +3,26 @@ import User from "../models/user.model.js";
 import uploadOnCloudinary from "../config/cloudinary.js";
 
 
-export const uploadLoop= async(req,res)=>{
-    try {
-        
-        const{caption}=req.body
-        let media;
-        if(req.file){
-            media=await uploadOnCloudinary(req.file.path)
-
-        }
-
-        else{
-            return res.status(400).json({
-                message:"media is required"
-            })
-        }
-
-        const loop= await Loop.create({
-            caption,media,author:req.userId
-        })
-        const user= await User.findById(req.userId)
-        user.loops.push(loop._id)
-        await user.save()
-
-        const populatedLoop= await Loop.findById(loop._id).populate("author", "name userName profileImage")
-        return res.status(201).json(populatedLoop)
-
-    } catch (error) {
-
-        return res.status(500).json({
-            message: `upload loop error ${error}`
-        })
-        
+export const uploadLoop=async (req,res)=>{
+try {
+    const {caption}=req.body
+    let media;
+    if(req.file){
+        media=await uploadOnCloudinary(req.file.path)
+    }else{
+        return res.status(400).json({message:"media is required"})
     }
-
+    const loop=await Loop.create({
+        caption,media,author:req.userId
+    })
+    const user=await User.findById(req.userId)
+    user.loops.push(loop._id)
+    await user.save()
+    const populatedLoop=await Loop.findById(loop._id).populate("author","name userName profileImage")
+    return res.status(201).json(populatedLoop)
+} catch (error) {
+    return res.status(500).json({message:`uploadloop error ${error}`})
+}
 }
 
 export const like=async(req,res)=>{
@@ -106,15 +92,12 @@ export const comment =async(req,res)=>{
     }
 }
 
-export const getAllLoops= async(req,res)=>{
+export const getAllLoops=async (req,res)=>{
     try {
-        const loops=await Loop.find({}).populate("author", "name userName profileImage").populate("comments.author")
+        const loops=await Loop.find({}).populate("author","name userName profileImage")
+        .populate("comments.author")
         return res.status(200).json(loops)
-        
     } catch (error) {
-        return res.status(500).json({
-            message: `get all loop error ${error}`
-        })
-        
+        return res.status(500).json({message:`get all loop error ${error}`})
     }
 }
