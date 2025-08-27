@@ -1,22 +1,16 @@
-import {createSlice} from "@reduxjs/toolkit"
-
-
-const loopSlice= createSlice({
+import { createSlice } from "@reduxjs/toolkit"
+const loopSlice=createSlice({
     name:"loop",
     initialState:{
-        loopData:[]
-        
+        loopData:[],
     },
-
     reducers:{
-        setLoopData:(state,action)=>{
-            
-            state.loopData=action.payload
-        },
-        
+       setLoopData:(state,action)=>{
+        state.loopData=action.payload
+       } 
     }
 
 })
 
-export const{setLoopData}=loopSlice.actions
+export const {setLoopData}=loopSlice.actions
 export default loopSlice.reducer
