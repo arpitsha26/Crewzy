@@ -18,16 +18,17 @@ function Feed() {
             </div>
 
       <div className='flex w-full overflow-auto gap-[10px] items-center p-[20px]'>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hbjbcwjbjkbjkbdcskjbjbs"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
-        <StoryDp userName={"hello"}/>
+        <StoryDp userName={"User1"}/>
+        <StoryDp userName={"User2"}/>
+        <StoryDp userName={"User3"}/>
+        <StoryDp userName={"User4"}/>
+        <StoryDp userName={"User5"}/>
+        <StoryDp userName={"User6"}/>
+        <StoryDp userName={"User7"}/>
+        <StoryDp userName={"User8"}/>
+        <StoryDp userName={"User9"}/>
+        <StoryDp userName={"User10"}/>
+        
 
 
       </div>
