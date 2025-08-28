@@ -15,7 +15,7 @@ import Loops from './pages/Loops'
 import getAllLoops from './hooks/getAllLoops'
 
 
-export const serverUrl="http://localhost:8000"
+export const serverUrl="https://crewzy.onrender.com"
 
 function App() {
   getCurrentUser()
