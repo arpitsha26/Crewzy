@@ -28,6 +28,7 @@ function Post({ post }) {
    const handleLike=async ()=>{
     try {
       const result=await axios.get(`${serverUrl}/api/post/like/${post._id}`,{withCredentials:true})
+      
       const updatedPost=result.data
 
       const updatedPosts=postData.map(p=>p._id==post._id?updatedPost:p)
