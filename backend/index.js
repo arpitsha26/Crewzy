@@ -28,6 +28,7 @@ app.use("/api/user", userRouter)
 app.use("/api/post", postRouter)
 app.use("/api/loop", loopRouter)
 app.use("/api/story", storyRouter)
+app.set("trust proxy", true);
 
 
 
