@@ -31,8 +31,6 @@ app.use("/api/story", storyRouter)
 
 
 connectDb();
-app.get("/",(req,res)=>{
-    res.send("Hello")
-})
+
 
 app.listen(port, ()=>{console.log(`server started at port: ${port}`)})
