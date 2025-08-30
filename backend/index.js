@@ -18,17 +18,18 @@ const port=process.env.PORT || 5000
 
 app.use(cors({
     origin:"https://crewzy.vercel.app",
-    credentials:"include",
+    credentials:"true",
     exposedHeaders: ["Set-Cookie"]
 }))
 app.use(express.json())
+app.set("trust proxy", 1);
 app.use(cookieParser())
 app.use("/api/auth", authRouter)
 app.use("/api/user", userRouter)
 app.use("/api/post", postRouter)
 app.use("/api/loop", loopRouter)
 app.use("/api/story", storyRouter)
-app.set("trust proxy", true);
+
 
 
 
