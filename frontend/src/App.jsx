@@ -18,7 +18,7 @@ import getAllStories from './hooks/getAllStories'
 import getFollowingList from './hooks/getFollowingList'
 
 
-export const serverUrl="http://localhost:8000"
+export const serverUrl="https://crewzybackend.vercel.app"
 
 function App() {
   getCurrentUser()
