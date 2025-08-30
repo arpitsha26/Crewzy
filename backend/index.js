@@ -18,7 +18,7 @@ const port=process.env.PORT || 5000
 
 app.use(cors({
     origin:"https://crewzy.vercel.app",
-    credentials:true,
+    credentials:"include",
     exposedHeaders: ["Set-Cookie"]
 }))
 app.use(express.json())
