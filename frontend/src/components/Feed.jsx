@@ -8,6 +8,8 @@ import Post from './Post';
 
 function Feed() {
   const {postData}=useSelector(state=>state.post)
+  const {userData}=useSelector(state=>state.user)
+  const {storyList,currentUserStory}=useSelector(state=>state.story)
   return (
     <div className='lg:w-[50%] w-full bg-black min-h-[100vh] lg:h-[100vh] relative lg:overflow-y-auto'>
       <div className='w-full h-[100px] flex items-center justify-between p-[20px] lg:hidden'>
@@ -18,16 +20,13 @@ function Feed() {
             </div>
 
       <div className='flex w-full overflow-auto gap-[10px] items-center p-[20px]'>
-        <StoryDp userName={"User1"}/>
-        <StoryDp userName={"User2"}/>
-        <StoryDp userName={"User3"}/>
-        <StoryDp userName={"User4"}/>
-        <StoryDp userName={"User5"}/>
-        <StoryDp userName={"User6"}/>
-        <StoryDp userName={"User7"}/>
-        <StoryDp userName={"User8"}/>
-        <StoryDp userName={"User9"}/>
-        <StoryDp userName={"User10"}/>
+        <StoryDp userName={"Your Story"} ProfileImage={userData.profileImage} story={userData.story}/>
+
+        {storyList?.map((story,index)=>(
+          
+        <StoryDp userName={story.author.userName} ProfileImage={story.author.profileImage} story={story} key={index}/>
+        ))}
+       
         
 
 

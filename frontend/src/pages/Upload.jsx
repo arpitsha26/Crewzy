@@ -7,7 +7,7 @@ import axios from 'axios';
 import { serverUrl } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPostData } from '../redux/postSlice';
-import { setStoryData } from '../redux/storySlice';
+import { setCurrentUserStory, setStoryData } from '../redux/storySlice';
 import { setLoopData } from '../redux/loopSlice';
 import { ClipLoader } from 'react-spinners';
 
