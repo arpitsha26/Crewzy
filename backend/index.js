@@ -17,8 +17,8 @@ const port=process.env.PORT || 5000
 
 
 app.use(cors({
-    origin:["https://crewzy.vercel.app","https://crewzy-lsmf.onrender.com"],
-    credentials:true,
+    origin:["https://crewzy.vercel.app","https://crewzy-lsmf.onrender.com","http://localhost:5173" ],
+    credentials: true
     
 }))
 app.use(express.json())

@@ -7,6 +7,8 @@ dotenv.config();
 
 import bcrypt from "bcryptjs"
 
+const isProduction = process.env.NODE_ENV === "production";
+
 
 export const signUp = async (req, res) => {
     try {
@@ -45,8 +47,8 @@ export const signUp = async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000,
-            secure: true,
-            sameSite:"none"
+            secure: isProduction,
+            sameSite:isProduction ? "none" : "lax"
             
 
 
@@ -95,15 +97,18 @@ export const signIn = async (req, res) => {
 
 
         const token = await genToken(user._id)
-
-        res.cookie("token", token, {
+        
+           res.cookie("token", token, {
             httpOnly: true,
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000,
-            secure: true,
-            sameSite:"none"
+            secure: isProduction,
+            sameSite:isProduction ? "none" : "lax"
             
 
+
+            
         })
+
 
         return res.status(200).json(user)
 
