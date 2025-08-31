@@ -47,7 +47,7 @@ export const signUp = async (req, res) => {
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000,
             secure: true,
             sameSite:'none',
-            partitioned: true
+            
 
 
             
@@ -101,7 +101,7 @@ export const signIn = async (req, res) => {
             maxAge: 10 * 365 * 24 * 60 * 60 * 1000,
             secure: true,
             sameSite:'none',
-            partitioned: true
+            
 
         })
 
