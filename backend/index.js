@@ -32,7 +32,12 @@ app.use("/api/story", storyRouter)
 
 
 
-connectDb();
+const startServer = async () => {
+  await connectDb();
 
+  app.listen(port, () => {
+    console.log(`🚀 Server started on port: ${port}`);
+  });
+};
 
-app.listen(port, ()=>{console.log(`server started at port: ${port}`)})
+startServer();
