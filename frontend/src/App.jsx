@@ -10,7 +10,7 @@ import getSuggestedUsers from './hooks/getSuggestedUsers'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
 import Upload from './pages/Upload'
-import getAllPost from './hooks/GetAllPost'
+import getAllPost from './hooks/getAllPost'
 import Loops from './pages/Loops'
 import getAllLoops from './hooks/getAllLoops'
 import Story from './pages/Story'
@@ -23,7 +23,7 @@ export const serverUrl="https://crewzybackend.vercel.app"
 function App() {
   getCurrentUser()
   getSuggestedUsers()
-  GetAllPost()
+  getAllPost()
   getAllLoops()
   getAllStories()
   getFollowingList()
