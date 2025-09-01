@@ -23,7 +23,7 @@ function Profile() {
     const handleProfile= async()=>{
         try {
             const result=await axios.get(`${serverUrl}/api/user/getProfile/${userName}`, {withCredentials:true})
-            dispatch(setPofileData(result.data))
+            dispatch(setPofileData(result.data)) 
         } catch (error) {
             console.log(error)
             
@@ -156,7 +156,7 @@ function Profile() {
                    { postType=="posts" && postData.map((post,index)=>(
     post.author?._id==profileData?._id && <Post post={post}/>
 ))}
-{postType=="saved" && postData.map((post,index)=>(
+{postType=="saved" && postData.map((post,index)=>( 
     userData.saved.includes(post._id) && <Post post={post}/>
 ))}
 </> 
